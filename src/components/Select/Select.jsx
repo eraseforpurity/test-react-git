@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BuyersTableContext } from "../../context/buyersTableContext";
 
-export const Select = ({ handleBuyersPerPageChange }) => {
+export const Select = () => {
+  const { handleBuyersPerPageChange, buyersPerPage } =
+    useContext(BuyersTableContext);
   return (
     <>
       <label htmlFor="buyers">Buyers per page</label>
 
       <select
-        defaultValue={15}
+        defaultValue={buyersPerPage}
         id="buyers"
         onChange={handleBuyersPerPageChange}
       >

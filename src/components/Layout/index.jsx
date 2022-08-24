@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { useUserContext } from "../../context/userContext";
+import { UserContext } from "../../context/userContext";
 import "./Layout.css";
 
 export const Layout = () => {
-  const { userState } = useUserContext();
+  const { userState } = useContext(UserContext);
   const { login, avatar_url } = userState;
 
   const navigate = useNavigate();

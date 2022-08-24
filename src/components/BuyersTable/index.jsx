@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BuyersTableContext } from "../../context/buyersTableContext";
 import "./BuyersTable.css";
 import { ReactComponent as Sort } from "../../assets/sort-solid.svg";
 import { tableHead } from "./constants";
 
-export const BuyersTable = ({ currentBuyers, handleSorting }) => {
+export const BuyersTable = () => {
+  const { currentBuyers, handleSorting } = useContext(BuyersTableContext);
+
   const buyersList = currentBuyers.map((buyer, index) => {
     return (
       <tr key={index}>
@@ -12,16 +15,12 @@ export const BuyersTable = ({ currentBuyers, handleSorting }) => {
           <Link to={`/buyers/${buyer.id}`}>{buyer?.id}</Link>
         </td>
         <td>{buyer?.name}</td>
-        <td>{buyer.averageCheck}</td>
-        <td>{buyer.purchases}</td>
-        <td>{buyer.totalRevenues}</td>
+        <td>{buyer?.averageCheck}</td>
+        <td>{buyer?.purchases}</td>
+        <td>{buyer?.totalRevenues}</td>
       </tr>
     );
   });
-
-  const handleSortingClick = (columnName) => {
-    handleSorting(columnName, "asc");
-  };
 
   return (
     <div className="buyers-list">
@@ -33,7 +32,7 @@ export const BuyersTable = ({ currentBuyers, handleSorting }) => {
                 {cell.title}
                 {cell.withSort && (
                   <Sort
-                    onClick={() => handleSortingClick(cell.columnName)}
+                    onClick={() => handleSorting(cell.columnName)}
                     width={8}
                   />
                 )}

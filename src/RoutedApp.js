@@ -4,7 +4,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { TerminalsPage } from "./pages/TerminalsPage";
 import { Layout } from "./components/Layout";
 import { BuyersPage } from "./pages/BuyersPage";
-import { BuyerPage } from "./components/BuyerPage";
+import { BuyerPage } from "./pages/BuyerPage";
 
 const RoutedApp = () => {
   return (

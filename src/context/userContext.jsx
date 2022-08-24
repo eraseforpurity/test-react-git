@@ -1,15 +1,14 @@
-import React, { useContext, useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 
-const UserContext = createContext();
-
-function useUserContext() {
-  return useContext(UserContext);
-}
+export const UserContext = createContext(null);
 
 const UserContextProvider = ({ children }) => {
   const [userState, setUserState] = useState({ login: null, avatar_url: null });
 
-  const userContextValue = { userState, setUserState };
+  const userContextValue = {
+    userState,
+    setUserState,
+  };
 
   return (
     <UserContext.Provider value={userContextValue}>
@@ -18,4 +17,4 @@ const UserContextProvider = ({ children }) => {
   );
 };
 
-export { useUserContext, UserContextProvider };
+export default UserContextProvider;

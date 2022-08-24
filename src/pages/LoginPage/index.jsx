@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
-import { useUserContext } from "../../context/userContext";
+import { UserContext } from "../../context/userContext";
 import { Input } from "../../components/Input";
 import { loginWithGitHub } from "../../api/authAPI";
 import { passwordRegExp } from "../../constants/regExp";
@@ -10,7 +10,7 @@ import { Button } from "../../components/Button";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { setUserState } = useUserContext();
+  const { setUserState } = useContext(UserContext);
 
   const [formState, setFormState] = useState({
     values: {
