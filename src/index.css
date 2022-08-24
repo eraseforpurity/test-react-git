@@ -34,15 +34,6 @@ select {
   font: inherit;
 }
 
-input {
-  padding: 16px;
-  font-size: 0.875rem;
-  line-height: 1.14;
-  border: 1px solid #c1c7d2;
-  border-radius: 5px;
-  outline: none;
-}
-
 h1,
 h2,
 h3,
@@ -64,9 +55,7 @@ a {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Arial", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -83,4 +72,14 @@ code {
 
 .App {
   height: 100%;
+}
+
+:root {
+  --sidebarParam: 125px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --sidebarParam: 75px;
+  }
 }

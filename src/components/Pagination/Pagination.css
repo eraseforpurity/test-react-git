@@ -1,0 +1,12 @@
+.pagination {
+  display: flex;
+}
+
+.paginate-item > button {
+  padding: 0 5px;
+  background-color: aliceblue;
+}
+
+.paginate-item > .active {
+  background-color: #feda54;
+}

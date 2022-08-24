@@ -1,0 +1,34 @@
+.terminals-list {
+  background-color: rgb(255, 255, 255, 0.95);
+  border-radius: 10px;
+  width: 100%;
+  min-height: 100px;
+  height: fit-content;
+  max-width: 800px;
+  padding: 15px;
+  overflow: auto;
+}
+
+.terminals-list table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.terminals-list td,
+.terminals-list th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+}
+
+.terminals-list tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.terminals-list table .actions {
+  width: 15%;
+}
+
+.terminals-list table .button {
+  background-color: rgb(228, 148, 148);
+}

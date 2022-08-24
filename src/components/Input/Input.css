@@ -1,0 +1,41 @@
+input {
+  padding: 16px;
+  font-size: 0.875rem;
+  line-height: 1.14;
+  border: 1px solid #c1c7d2;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-label {
+  background-color: #ffffff;
+  padding: 2px;
+  white-space: nowrap;
+  position: absolute;
+  font-size: 0.875rem;
+  line-height: 1.14;
+  font-weight: 300;
+  color: #78808d;
+  top: 50%;
+  left: 5%;
+  transform: translate(0, -50%);
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  user-select: none;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper > input:focus ~ .input-label,
+.input-wrapper > input:not(:placeholder-shown) ~ .input-label {
+  top: 0%;
+}
+
+.input-error {
+  font-size: 0.875rem;
+  color: red;
+  position: absolute;
+}
