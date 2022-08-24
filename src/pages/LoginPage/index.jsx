@@ -55,6 +55,18 @@ export const LoginPage = () => {
       return;
     }
 
+    if (!formState.values.login) {
+      setFormState((prevState) => ({
+        ...prevState,
+        errors: {
+          ...prevState.errors,
+          login: "Enter a login",
+        },
+      }));
+
+      return;
+    }
+
     loginWithGitHub(formState.values.login)
       .then((res) => {
         const data = res.json();
