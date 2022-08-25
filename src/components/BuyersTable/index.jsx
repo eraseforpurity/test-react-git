@@ -6,7 +6,8 @@ import { ReactComponent as Sort } from "../../assets/sort-solid.svg";
 import { tableHead } from "./constants";
 
 export const BuyersTable = () => {
-  const { currentBuyers, handleSorting } = useContext(BuyersTableContext);
+  const { currentBuyers, sortTwoDirections, sortingState } =
+    useContext(BuyersTableContext);
 
   const buyersList = currentBuyers.map((buyer, index) => {
     return (
@@ -22,15 +23,25 @@ export const BuyersTable = () => {
     );
   });
 
+  const arrowTransform = (columnName) => {
+    if (sortingState.column === columnName) {
+      return sortingState.direction === "asc" ? "asc" : "desc";
+    }
+
+    return "asc";
+  };
+
   return (
     <div className="buyers-list">
       <table>
         <thead>
           <tr>
             {tableHead.map((cell, id) => (
-              <th onClick={() => handleSorting(cell.columnName)} key={id}>
+              <th onClick={() => sortTwoDirections(cell.columnName)} key={id}>
                 {cell.title}
-                {cell.withSort && <Sort width={8} />}
+                {cell.withSort && (
+                  <Sort className={arrowTransform(cell.columnName)} width={8} />
+                )}
               </th>
             ))}
           </tr>
