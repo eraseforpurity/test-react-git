@@ -4,6 +4,7 @@ import { BuyersTableContext } from "../../context/buyersTableContext";
 export const Select = () => {
   const { handleBuyersPerPageChange, buyersPerPage } =
     useContext(BuyersTableContext);
+
   return (
     <>
       <label htmlFor="buyers">Buyers per page</label>

@@ -3,14 +3,8 @@ import "./Pagination.css";
 import { BuyersTableContext } from "../../context/buyersTableContext";
 
 export const Pagination = () => {
-  const { buyersPerPage, buyersState, handlePaginationChange, currentPage } =
+  const { pageNumbers, handlePaginationChange, currentPage } =
     useContext(BuyersTableContext);
-
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(buyersState.length / +buyersPerPage); i++) {
-    pageNumbers.push(i);
-  }
 
   return (
     <div>

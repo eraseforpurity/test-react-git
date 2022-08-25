@@ -51,7 +51,14 @@ const BuyersTableContextProvider = ({ children }) => {
     setBuyersState(sortedArr);
   };
 
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(buyersState.length / +buyersPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   const buyersTableContextValue = {
+    pageNumbers,
     filterValue,
     buyersState,
     buyersPerPage,
