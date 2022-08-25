@@ -28,14 +28,9 @@ export const BuyersTable = () => {
         <thead>
           <tr>
             {tableHead.map((cell, id) => (
-              <th key={id}>
+              <th onClick={() => handleSorting(cell.columnName)} key={id}>
                 {cell.title}
-                {cell.withSort && (
-                  <Sort
-                    onClick={() => handleSorting(cell.columnName)}
-                    width={8}
-                  />
-                )}
+                {cell.withSort && <Sort width={8} />}
               </th>
             ))}
           </tr>
