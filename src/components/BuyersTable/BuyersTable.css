@@ -1,0 +1,42 @@
+.buyers-list {
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 315px;
+  height: fit-content;
+  max-width: 800px;
+  padding: 15px;
+  overflow: auto;
+}
+
+.buyers-list table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.buyers-list td,
+.buyers-list th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 8px;
+  width: 20%;
+}
+
+.buyers-list tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.buyers-list .search {
+  width: 100%;
+  min-width: 50px;
+}
+
+.buyers-list thead svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.buyers-list thead th {
+  cursor: pointer;
+}

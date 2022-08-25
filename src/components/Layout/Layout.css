@@ -1,0 +1,73 @@
+.layout {
+  height: 100%;
+}
+
+.sidebar {
+  z-index: 3;
+  position: fixed;
+  flex: 0 1 auto;
+  width: var(--sidebarParam);
+  min-height: 100%;
+  box-shadow: 0 0 1px 1px;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #feda54;
+  justify-content: space-between;
+}
+
+.main {
+  min-height: 100%;
+  background-color: rgba(241, 212, 212);
+  background-image: url("https://images.hdqwalls.com/wallpapers/cyberpunk-sunset-grid-mountains-sun-dark-design-5t.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  padding: 30px 30px 30px calc(30px + var(--sidebarParam));
+  isolation: isolate;
+  position: relative;
+}
+
+.main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(241, 212, 212);
+  opacity: 0.5;
+}
+
+.user-info {
+  width: 100%;
+}
+
+.avatar {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+footer p {
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    min-height: 0;
+    height: var(--sidebarParam);
+  }
+
+  .user-info {
+    width: 35px;
+  }
+
+  .main {
+    padding: calc(8px + var(--sidebarParam)) 8px 8px 8px;
+  }
+}
