@@ -35,8 +35,17 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 5px;
+  transition: all 0.3s;
 }
 
 .buyers-list thead th {
   cursor: pointer;
+}
+
+thead svg.asc {
+  transform: rotateZ(0);
+}
+
+thead svg.desc {
+  transform: rotateZ(180deg);
 }

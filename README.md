@@ -21,4 +21,4 @@ Open the App. Enter your GitHub Login.
 2. At route **_buyers_** you can see table with all users
 3. You can Search user by name
 4. You can choose amount of users on a page
-5. To sort the table - click on the arrows, which is located in the column heading to the right of the text, sorting is available only in ascending order
+5. To sort the table - click on the arrows, which is located in the column heading to the right of the text, sorting is available in ascending and descending order

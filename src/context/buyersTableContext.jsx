@@ -1,10 +1,11 @@
 import React, { useState, createContext } from "react";
 import { buyers } from "../constants/buyers";
 
-const sortColumn = (name, direction = "asc", arrayToSort) => {
+const sortColumn = (name, direction, arrayToSort) => {
   if (direction === "asc")
     return [...arrayToSort].sort((a, b) => (a[name] > b[name] ? -1 : 1));
-  return [...arrayToSort].sort((a, b) => (a[name] > b[name] ? 1 : -1));
+  if (direction === "desc")
+    return [...arrayToSort].sort((a, b) => (a[name] < b[name] ? -1 : 1));
 };
 
 const callbackFilter = (buyer, query) => {
@@ -13,12 +14,6 @@ const callbackFilter = (buyer, query) => {
   } else if (buyer.name.toLowerCase().includes(query.toLowerCase())) {
     return buyer;
   }
-};
-
-const filterBuyers = (query, buyers) => {
-  const filtered = buyers.filter((buyer) => callbackFilter(buyer, query));
-
-  return filtered;
 };
 
 export const BuyersTableContext = createContext(null);
@@ -30,9 +25,25 @@ const BuyersTableContextProvider = ({ children }) => {
 
   const [filterValue, setFilterValue] = useState("");
 
+  const [sortingState, setSortingState] = useState({
+    column: "",
+    direction: "asc",
+  });
+
   const lastBuyerIndex = currentPage * buyersPerPage;
   const firstBuyerIndex = lastBuyerIndex - buyersPerPage;
   const currentBuyers = buyersState.slice(firstBuyerIndex, lastBuyerIndex);
+
+  const filterBuyers = (query, buyers) => {
+    const filtered = buyers.filter((buyer) => callbackFilter(buyer, query));
+
+    setSortingState({
+      column: "",
+      direction: "asc",
+    });
+
+    return filtered;
+  };
 
   const handlePaginationChange = (number) => setCurrentPage(number);
   const handleBuyersPerPageChange = (e) => {
@@ -57,7 +68,35 @@ const BuyersTableContextProvider = ({ children }) => {
     pageNumbers.push(i);
   }
 
+  const sortTwoDirections = (column) => {
+    if (sortingState.column !== column) {
+      handleSorting(column, "asc");
+
+      setSortingState(() => ({
+        column,
+        direction: "asc",
+      }));
+      return;
+    }
+
+    if (sortingState.direction === "asc") {
+      handleSorting(column, "desc");
+      setSortingState({
+        column,
+        direction: "desc",
+      });
+    } else {
+      handleSorting(column, "asc");
+      setSortingState({
+        column,
+        direction: "asc",
+      });
+    }
+  };
+
   const buyersTableContextValue = {
+    sortingState,
+    sortTwoDirections,
     pageNumbers,
     filterValue,
     buyersState,
